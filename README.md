@@ -1,27 +1,52 @@
-# FinancialPortfolioApp
+#  Investment Portfolio Manager (Angular + LocalStorage)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+A lightweight, responsive web application built with **Angular** that allows users to **add, view, and manage their investment portfolio**. This includes Stocks, Bonds, Real Estate, and Mutual Funds, with visual insights using charts and detailed form inputs.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+##  Features
 
-## Code scaffolding
+-  Add investments with:
+  - Investment Type (Stocks, Bonds, etc.)
+  - Amount
+  - Quantity
+  - Date of Investment
+  - Notes
+-  Store all data in `LocalStorage` (No backend required)
+-  Dashboard with:
+  - Asset Allocation Pie Chart
+  - Portfolio Performance Line Chart
+-  Persistent storage across sessions
+-  Clean and dynamic form UI with validation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+##  Project Structure
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+src/
+├── app/
+│   ├── dashboard/            # Portfolio overview (charts + summary)
+│   ├── investments/          # Add, list, and manage investments
+│   ├── shared/               # Models, services, and constants
+│   └── app.routes.ts         # Routing configuration
+│   └── app.config.ts         # App-level providers and bootstrap
+├── assets/
+├── index.html
+└── main.ts
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# for installation 
+git clone https://github.com/your-username/investment-portfolio-manager.git
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ Technologies Used
+Angular 17 (Standalone components)
 
-## Further help
+Angular Material (UI components)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+ApexCharts (Pie & Line charts)
+
+RxJS (Reactive data handling)
+
+LocalStorage for persistent state
