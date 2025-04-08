@@ -1,0 +1,58 @@
+<div class="form-container">
+  <h2>Add Investment</h2>
+
+  <!-- Form Section -->
+  <form *ngIf="!showPreview" [formGroup]="investmentForm" (ngSubmit)="onSubmit()">
+    <ng-container *ngFor="let field of formFields">
+      <mat-form-field appearance="outline" class="full-width" *ngIf="field.type !== 'date'">
+        <mat-label>{{ field.label }}</mat-label>
+
+        <input
+          *ngIf="field.type === 'text' || field.type === 'number'"
+          matInput
+          [type]="field.type"
+          [formControlName]="field.name"
+        />
+
+        <mat-select *ngIf="field.type === 'select'" [formControlName]="field.name">
+          <mat-option *ngFor="let option of field.options" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="investmentForm.get(field.name)?.hasError('required')">
+          {{ field.label }} is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width" *ngIf="field.type === 'date'">
+        <mat-label>{{ field.label }}</mat-label>
+        <input matInput [matDatepicker]="picker" [formControlName]="field.name" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+        <mat-error *ngIf="investmentForm.get(field.name)?.hasError('required')">
+          {{ field.label }} is required
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+  </form>
+
+  <!-- Preview Section -->
+  <div *ngIf="showPreview" class="preview-container">
+    <h3>Please Review Your Investment</h3>
+    <ul>
+      <li *ngFor="let field of formFields">
+        <strong>{{ field.label }}:</strong>
+        {{ submittedData[field.name] }}
+      </li>
+    </ul>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" (click)="confirmSubmission()">Confirm</button> &nbsp;
+      <button mat-raised-button color="accent" (click)="editForm()">Edit</button>
+    </div>
+  </div>
+</div>
