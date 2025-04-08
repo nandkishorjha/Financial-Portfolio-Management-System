@@ -50,3 +50,8 @@ ApexCharts (Pie & Line charts)
 RxJS (Reactive data handling)
 
 LocalStorage for persistent state
+
+# once clone please run npm install --force my node version and angualr version was creating issues so please go with npm install --force
+
+# npm install --force 
+# npm start
